@@ -16,8 +16,6 @@ class BookShelfViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val books = repository.fetchBooks("tolkien")
-            println("Hello")
-            println(books?.get(0)?.toString())
         }
     }
 }

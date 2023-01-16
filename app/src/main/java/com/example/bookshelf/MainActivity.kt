@@ -14,11 +14,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.bookshelf.ui.bookshelf.BookShelfViewModel
 import com.example.bookshelf.ui.theme.BookshelfTheme
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Timber.plant(Timber.DebugTree())
+
         setContent {
             BookshelfTheme {
                 // A surface container using the 'background' color from the theme

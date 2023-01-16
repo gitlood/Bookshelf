@@ -3,16 +3,23 @@ package com.example.bookshelf.data.repository
 import com.example.bookshelf.data.BookShelfApi
 import com.example.bookshelf.data.repository.interfaces.BookshelfRepository
 import com.example.bookshelf.data.response.Book
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
+import timber.log.Timber
 
-class BookshelfRepositoryImpl(private val bookShelfApi: BookShelfApi) : BookshelfRepository {
+class BookshelfRepositoryImpl(private val bookShelfApi: BookShelfApi, private val dispatcher :CoroutineDispatcher) : BookshelfRepository {
 
-    override suspend fun fetchBooks(searchQuery: String): List<Book>? {
-        val response = bookShelfApi.searchBooks("tolkien")
+    override suspend fun fetchBooks(searchQuery: String): List<Book>? = withContext(dispatcher) {
+        try{val response = bookShelfApi.searchBooks(searchQuery)
         if(response.isSuccessful){
-            println(response.body()?.books?.get(0))
+            response.body()?.books
         }else{
-            println(response.body())
+            Timber.tag("Repo").d("Response not successful")
+           null
         }
-        return response.body()?.books
+        }catch (e:Exception){
+            println(e)
+            null
+        }
     }
 }

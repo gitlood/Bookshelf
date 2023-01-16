@@ -78,4 +78,6 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 }

@@ -1,4 +1,4 @@
-package com.example.bookshelf.data.util
+package com.example.bookshelf.data
 
 import com.example.bookshelf.data.response.Book
 import com.google.gson.annotations.SerializedName

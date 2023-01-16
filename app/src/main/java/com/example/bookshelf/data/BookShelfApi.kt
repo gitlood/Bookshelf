@@ -1,6 +1,5 @@
 package com.example.bookshelf.data
 
-import com.example.bookshelf.data.util.BooksDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
