@@ -1,5 +1,6 @@
 package com.example.bookshelf.data.response
 
+@kotlinx.serialization.Serializable()
 data class Book(
     val accessInfo: AccessInfo,
     val etag: String,
@@ -9,4 +10,8 @@ data class Book(
     val searchInfo: SearchInfo,
     val selfLink: String,
     val volumeInfo: VolumeInfo
-)
+){
+//    init{
+//        Book.serializer()
+//    }
+}

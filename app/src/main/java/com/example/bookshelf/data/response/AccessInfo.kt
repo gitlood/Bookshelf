@@ -1,5 +1,5 @@
 package com.example.bookshelf.data.response
-
+@kotlinx.serialization.Serializable
 data class AccessInfo(
     val accessViewStatus: String,
     val country: String,
