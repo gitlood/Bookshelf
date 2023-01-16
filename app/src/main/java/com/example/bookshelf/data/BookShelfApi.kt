@@ -1,13 +1,13 @@
 package com.example.bookshelf.data
 
-import com.example.bookshelf.data.util.ItemsResponse
-import retrofit2.Call
+import com.example.bookshelf.data.util.BooksDto
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface BookShelfApi {
-    @GET("volumes?")
-    fun getBooksBySearchQuery(
-        @Query("searchTerm") searchTerm: String,
-    ): Call<ItemsResponse>
+    @GET("volumes")
+    suspend fun searchBooks(
+        @Query("q") query: String = "cicero"
+    ): Response<BooksDto>
 }
