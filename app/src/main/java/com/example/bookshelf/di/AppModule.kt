@@ -8,6 +8,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -30,6 +32,10 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRepository(api: BookShelfApi): BookshelfRepository =
-        BookshelfRepositoryImpl(api)
+    fun provideCoroutineDispatcher() = Dispatchers.IO
+
+    @Singleton
+    @Provides
+    fun provideRepository(api: BookShelfApi, dispatcher: CoroutineDispatcher): BookshelfRepository =
+        BookshelfRepositoryImpl(api, dispatcher)
 }

@@ -15,10 +15,10 @@ class BookshelfRepositoryImpl(private val bookShelfApi: BookShelfApi, private va
             response.body()?.books
         }else{
             Timber.tag("Repo").d("Response not successful")
-           null
+            null
         }
         }catch (e:Exception){
-            println(e)
+            Timber.tag("Repo").d(e)
             null
         }
     }
